@@ -27,11 +27,11 @@ const countdown = document.getElementById("countdown");
 
 //**************************************************************** */
 
-if (localStorage.getItem("container") !== null) {
-  JSON.parse(localStorage.getItem("container")).sort(
+if (localStorage.getItem("playerslist") !== null) {
+  JSON.parse(localStorage.getItem("playerslist")).sort(
     (a, b) => b.score - a.score,
   );
-  users = JSON.parse(localStorage.getItem("container"));
+  users = JSON.parse(localStorage.getItem("playerslist"));
 }
 
 //*******************START*************************** */
@@ -129,7 +129,7 @@ function displayQuestions() {
           <span>${Questions[index].category}</span>
         </div>
         <div class="stat-badge difficulty ${difficultylevel(levelVALUE)}">
-          <i class="fa-solid fa-face-smile"></i>
+          <i class="fa-solid  ${difficultylevelface(levelVALUE)}  "></i>
           <span>${Questions[index].difficulty}</span>
         </div>
         <div class="stat-badge timer">
@@ -218,6 +218,22 @@ window.difficultylevel = function (level) {
   }
 };
 
+window.difficultylevelface = function (level) {
+  switch (level) {
+    case "easy":
+      return "fa-face-smile";
+
+    case "medium":
+      return "fa-face-meh";
+
+    case "hard":
+      return "fa-skull";
+
+    default:
+      return "";
+  }
+};
+
 //****************************timer********************* */
 
 function startTimer() {
@@ -291,7 +307,7 @@ function leadbaord() {
 
   users.push(userdata);
   users.sort((a, b) => b.score - a.score);
-  localStorage.setItem("container", JSON.stringify(users));
+  localStorage.setItem("playerslist", JSON.stringify(users));
 
   for (let i = 0; i < users.length; i++) {
     rank++;
