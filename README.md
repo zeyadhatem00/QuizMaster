@@ -37,7 +37,7 @@ The main source files are:
 1. Clone the repository and enter its directory:
 
    ```bash
-   git clone https://github.com/zeyadhatem00/QuizMaster.git
+   git clone https://github.com/zeyadhatem00/quiz-master.git
    cd QuizMaster
    ```
 
